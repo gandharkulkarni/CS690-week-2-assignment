@@ -1,8 +1,9 @@
 import TodoList from "./components/todolist/todolist";
+import 'font-awesome/css/font-awesome.min.css';
 
 export default function Home() {
   return (
-    <main className="bg-gray-900 min-h-screen">
+    <main className="bg-white dark:bg-gray-800 min-h-screen">
       <TodoList />
     </main>
   )

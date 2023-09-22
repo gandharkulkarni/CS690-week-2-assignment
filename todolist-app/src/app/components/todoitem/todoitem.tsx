@@ -98,24 +98,24 @@ const TodoItem: React.FC<TodoItemProps> = ({ id, title }) => {
     }
 
     return (
-        <div className="bg-gray-900 w-full">
+        <div className="bg-gray-900 w-full shadow-lg">
             <ul className="bg-gray-900 text-white p-4 rounded-lg shadow-lg"> {title}
                 {items !== undefined && items.map((item) => {
                     return (
                         <div key={item.id} className="bg-gray-900 text-white p-6">
                             <li key={item.id}> {item.content} | Due: {new Date(item.due_date).toISOString().slice(0, 10)} | Completed: {String(item.is_completed)} </li>
-                            <input type="button" className="bg-red-900 rounded-lg p-2 m-2" value={'Delete'} onClick={() => handleDeleteItem(item.id)} />
-                            <input type="button" className="bg-blue-500 p-2 m-2 text-white rounded-lg" value={'Edit'} onClick={() => handleEditItemForm(item.id)}></input>
+                            <a type="button" className="bg-yellow-500 p-2 m-2 text-white rounded-lg" onClick={() => handleEditItemForm(item.id)}><i className="fa fa-pencil text-white p-2"></i></a>
+                            <a type="button" className="bg-red-500 rounded-lg p-2 m-2" onClick={() => handleDeleteItem(item.id)} ><i className="fa fa-trash text-white p-2"></i></a>
                         </div>
                     )
                 })}
             </ul>
-            <input type="button" className="bg-green-500 p-2 m-2 text-white rounded-lg" value={'New item'} onClick={handleAddItemForm}></input>
+            <a type="button" className="bg-green-500 p-2 m-2 text-white rounded-lg" onClick={handleAddItemForm}>New Item <i className="fa fa-list text-white p-2"></i></a>
             {isAddFormVisible && (
                 <form>
                     <input type="text" className="rounded-lg m-2 p-2" placeholder="content" id="content" />
                     <input type="Date" className="rounded-lg m-2 p-2" placeholder="Due Date" id="dueDate" />
-                    <input type="button" value={'Add'} className="bg-green-500 rounded-lg m-2 p-2 text-white" onClick={handleAddItem}></input>
+                    <a type="button" className="bg-green-500 rounded-lg m-2 p-2 text-white" onClick={handleAddItem}><i className="fa fa-plus text-white p-2"></i></a>
                 </form>
             )}
             {isEditFormVisible && (
@@ -129,7 +129,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ id, title }) => {
                     <br />
                     <label htmlFor="isCompleted" className="text-white">Completed?</label>
                     <input type="CheckBox" className="rounded-lg m-2 p-2" placeholder="Completed" id="isCompleted" checked={itemCompletedStatus} onChange={(e) => setItemCompletedStatus(!itemCompletedStatus)} />
-                    <input type="button" value={'Update'} className="bg-blue-500 rounded-lg m-2 p-2 text-white" onClick={() => handleEditItem(itemId)}></input>
+                    <a type="button" className="bg-green-500 rounded-lg m-2 p-2 text-white" onClick={() => handleEditItem(itemId)}><i className="fa fa-check text-white p-2"></i></a>
                 </form>
             )}
         </div>

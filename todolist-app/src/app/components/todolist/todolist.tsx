@@ -74,23 +74,27 @@ const handleEditListTitle = async () =>{
 }
 
     return (
-        <div>
-            <h1 className="text-white p-5 text-center">Add a new todo list</h1>
-            <input type="text" placeholder="Todo list title" id = {'newListTitle'} className="rounded-lg m-2 p-2"></input>
-            <input type="button" value={'Add'} className="bg-green-500 rounded-lg m-2 p-2 text-white" onClick={handleAddList}></input>
+        <div className="shadow-lg w-full">
+            <div className="flex justify-center items-center text-center p-4">
+                <h1 className="text-gray-900 dark:text-white"></h1><br/>
+                <input type="text" placeholder="Add a new todo list" id = {'newListTitle'} className="rounded-lg m-2 p-2"></input>
+                <a className="bg-green-500 rounded-lg m-2 p-2 text-white" onClick={handleAddList}>
+                    <i className="fa fa-plus text-white p-2"></i>
+                </a>
+            </div>
             {list !== undefined && list.map((l) => {
                 return(
-                    <div key={l.id} className="flex m-2 p-2 bg-gray-800 rounded-lg">
+                    <div key={l.id} className="flex w-full m-2 p-2 bg-gray-800 rounded-lg">
                         {isEditFormVisible && l.id===listId && (
                                 <div>
                                 <input type="text" className="rounded-lg m-2 p-2 px-4" id="editTitle" value={listTitle} onChange={(e)=> setListTitle(e.target.value)} />
-                                <input type="button" className="bg-green-500 rounded-lg m-2 p-2 px-4" value={'Update'} onClick={handleEditListTitle} />
+                                <a className="bg-green-500 rounded-lg m-2 p-2 px-4" onClick={handleEditListTitle} ><i className="fa fa-check text-white p-2"></i></a>
                                 </div>
                         )}
                         <TodoItem id={l.id} title={l.title}></TodoItem>
-                        <div className="absolute right-0">
-                            <input type="button" className="bg-yellow-900 p-2 px-6 m-6  text-white rounded-lg" value={'Edit'} onClick={()=> handleEditListForm(l.id, l.title)}></input>
-                            <input type="button" className="bg-red-900 p-2 px-6 m-6  text-white rounded-lg" value={'Delete'} onClick={()=> handleDeleteList(l.id)}></input>
+                        <div className="absolute right-0 my-3">
+                            <a className="bg-yellow-400 p-2 px-6 m-6  text-white rounded-lg" onClick={()=> handleEditListForm(l.id, l.title)}><i className="fa fa-pencil text-white p-2"></i></a>
+                            <a className="bg-red-400 p-2 px-6 m-6  text-white rounded-lg" onClick={()=> handleDeleteList(l.id)}><i className="fa fa-trash text-white p-2"></i></a>
                         </div>
                     </div>
                 )
