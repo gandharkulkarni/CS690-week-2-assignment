@@ -74,7 +74,7 @@ const handleEditListTitle = async () =>{
 }
 
     return (
-        <div className="shadow-lg w-full">
+        <div className="shadow-lg p-5">
             <div className="flex justify-center items-center text-center p-4">
                 <h1 className="text-gray-900 dark:text-white"></h1><br/>
                 <input type="text" placeholder="Add a new todo list" id = {'newListTitle'} className="rounded-lg m-2 p-2"></input>
@@ -84,7 +84,7 @@ const handleEditListTitle = async () =>{
             </div>
             {list !== undefined && list.map((l) => {
                 return(
-                    <div key={l.id} className="flex w-full m-2 p-2 bg-gray-800 rounded-lg">
+                    <div key={l.id} className="flex w-full justify-center m-5 p-2 bg-gray-800 rounded-lg">
                         {isEditFormVisible && l.id===listId && (
                                 <div>
                                 <input type="text" className="rounded-lg m-2 p-2 px-4" id="editTitle" value={listTitle} onChange={(e)=> setListTitle(e.target.value)} />
@@ -92,8 +92,8 @@ const handleEditListTitle = async () =>{
                                 </div>
                         )}
                         <TodoItem id={l.id} title={l.title}></TodoItem>
-                        <div className="absolute right-0 my-3">
-                            <a className="bg-yellow-400 p-2 px-6 m-6  text-white rounded-lg" onClick={()=> handleEditListForm(l.id, l.title)}><i className="fa fa-pencil text-white p-2"></i></a>
+                        <div className="">
+                            <a className="bg-yellow-400 p-2 px-6 m-6  text-white rounded-lg" onClick={()=> handleEditListForm(l.id, l.title)}><i className="fa fa-pencil text-white p-2"></i></a> <br/><br/>
                             <a className="bg-red-400 p-2 px-6 m-6  text-white rounded-lg" onClick={()=> handleDeleteList(l.id)}><i className="fa fa-trash text-white p-2"></i></a>
                         </div>
                     </div>

@@ -98,7 +98,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ id, title }) => {
     }
 
     return (
-        <div className="bg-gray-900 w-full shadow-lg">
+        <div className="flex justify-center items-end w-full bg-gray-900 shadow-lg">
             <ul className="bg-gray-900 text-white p-4 rounded-lg shadow-lg"> {title}
                 {items !== undefined && items.map((item) => {
                     return (
@@ -110,7 +110,9 @@ const TodoItem: React.FC<TodoItemProps> = ({ id, title }) => {
                     )
                 })}
             </ul>
-            <a type="button" className="bg-green-500 p-2 m-2 text-white rounded-lg" onClick={handleAddItemForm}>New Item <i className="fa fa-list text-white p-2"></i></a>
+            <div>
+                <a type="button" className="bg-green-500 p-2 m-2 text-white rounded-lg" onClick={handleAddItemForm}>New Item <i className="fa fa-list text-white p-2"></i></a>
+            </div>
             {isAddFormVisible && (
                 <form>
                     <input type="text" className="rounded-lg m-2 p-2" placeholder="content" id="content" />
